@@ -1,27 +1,14 @@
 import './App.css'
 import { MovieCard } from './components/MovieCard'
-import { MovieType } from './types/movieTypes'
+import { getMovies } from './api/movies'
 
 function App() {
-  const movieMock:MovieType[]  = [
-    {
-      idMovie: 1,
-      titleMovie: 'Il Signore degli Anelli'
-    },
-    {
-      idMovie: 2,
-      titleMovie: 'Lo Hobbit'
-    },
-    {
-      idMovie: 3,
-      titleMovie: 'Harry Potter'
-    }
-  ]
+  const movieMock = getMovies()
   return (
     <>
-      <h1>Questo è il componente React che rappresenta l'intera applicazione</h1>      {
+     {
         movieMock.map((movie) => {
-          return <MovieCard idMovie={movie.idMovie} titleMovie={movie.titleMovie} />
+          return <MovieCard key={movie.idMovie} movie = {movie} />
         })
       }
     </>
