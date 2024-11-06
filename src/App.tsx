@@ -1,15 +1,24 @@
 import './App.css'
-import { MovieCard } from './components/MovieCard'
+// import { MovieCard } from './components/MovieCard'
 import { getMovies } from './api/movies'
+import { MovieType } from './types/movieTypes'
 
 function App() {
-  const movieMock = getMovies()
+  let movies: MovieType[] = [];
+  
+const movieMock = async () => {
+  movies = await getMovies();
+}
+
+movieMock();
+
   return (
     <>
      {
-        movieMock.map((movie) => {
-          return <MovieCard key={movie.idMovie} movie = {movie} />
-        })
+        // movies.map((movie) => {
+        //   return <MovieCard key={movie.idMovie} movie = {movie} />
+        // })
+        console.log(movies)
       }
     </>
   )
