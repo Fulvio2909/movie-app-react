@@ -1,24 +1,27 @@
 import './App.css'
-// import { MovieCard } from './components/MovieCard'
+import { MovieCard } from './components/MovieCard'
 import { getMovies } from './api/movies'
 import { MovieType } from './types/movieTypes'
+import { useState, useEffect } from 'react'
 
 function App() {
-  let movies: MovieType[] = [];
-  
-const movieMock = async () => {
-  movies = await getMovies();
-}
+  const [movies, setMovies] = useState<MovieType[]>([])
 
-movieMock();
+  //useEffect(parFunzione, parArrayDipendenze)
+  useEffect(() => {
+    const fetchMovies = async () => {
+      const movies = await getMovies()
+      setMovies(movies)
+    }
+    fetchMovies()
+  }, [])
 
   return (
     <>
-     {
-        // movies.map((movie) => {
-        //   return <MovieCard key={movie.idMovie} movie = {movie} />
-        // })
-        console.log(movies)
+      {
+        movies.map((movie) => {
+          return <MovieCard key={movie.id} movie={movie} />
+        })
       }
     </>
   )

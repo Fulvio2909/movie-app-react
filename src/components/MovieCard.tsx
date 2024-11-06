@@ -28,15 +28,7 @@ export const MovieCard = ({ movie }: MovieCardProps) => {
     return (
         <>
             <div style={{ backgroundColor: 'grey', borderRadius: '3rem', padding: '10px', margin: '30px' }} onClick={handleClickCount}>
-                <p>{movie.idMovie}</p>
-                {
-                    /*
-                    * Se la funzione di handleClick ha dei parametri, usare una arrow function per passare i parametri
-                    */
-                }
-                <h1 onClick={() => handleClick(movie.titleMovie)}>{movie.titleMovie}</h1>
-                <h2 onClick={() => handleClick(movie.descritption)}>{movie.descritption}</h2 >
-                <p>Numero di click: {clickCount}</p>
+            <h1>{movie.id}</h1>
             </div>
         </>
     );
